@@ -1,3 +1,35 @@
+## Install
+
+Works in any Chromium browser (Chrome, Helium, Brave, Edge).
+
+1. Clone or download this repo, then open `chrome://extensions`
+2. Turn on **Developer mode** (top right)
+3. **Load unpacked** → pick this folder (the one containing `manifest.json`)
+4. Open an activity. On a question, a round blue ⚡ button sits bottom-right *inside the
+   course frame*. **Alt+F** does the same thing.
+
+## Use
+
+One button. A round ⚡ button sits in the bottom-right of the course frame, on
+questions only. Click it:
+
+1. If the question is locked after a wrong answer, it presses **Try again** first.
+2. It looks the question up in the key read from `content/data.js` when the page
+   opened, fills the answers, checks they stuck, and submits.
+
+Fallback, only for a question the file does not cover: tick a throwaway answer and
+press **Submit**, which forces the xAPI statement carrying `correctResponsesPattern`;
+read the key out of that traffic, press Try again, then fill. Every question in this
+course is in the file, so this path does not run here — but it is kept, because it is
+the second finding and it works on packages that do not ship answers.
+
+A short status line appears beside the button and fades. There is no other UI.
+
+**Nothing is stored and nothing is logged.** The answer key lives in memory and dies
+with the page. The extension declares no `storage`
+permission, writes no files, and prints nothing to the console.
+
+
 # ツ (lms3)
 
 **lms2 embedded exploit for revision.**
@@ -106,37 +138,6 @@ is never asked "is this right?" — it is only *told* the score (`result.score.s
 - Sign/verify score statements, or derive the score from recorded responses rather than trusting the posted value.
 
 ---
-
-## Install
-
-Works in any Chromium browser (Chrome, Helium, Brave, Edge).
-
-1. Clone or download this repo, then open `chrome://extensions`
-2. Turn on **Developer mode** (top right)
-3. **Load unpacked** → pick this folder (the one containing `manifest.json`)
-4. Open an activity. On a question, a round blue ⚡ button sits bottom-right *inside the
-   course frame*. **Alt+F** does the same thing.
-
-## Use
-
-One button. A round ⚡ button sits in the bottom-right of the course frame, on
-questions only. Click it:
-
-1. If the question is locked after a wrong answer, it presses **Try again** first.
-2. It looks the question up in the key read from `content/data.js` when the page
-   opened, fills the answers, checks they stuck, and submits.
-
-Fallback, only for a question the file does not cover: tick a throwaway answer and
-press **Submit**, which forces the xAPI statement carrying `correctResponsesPattern`;
-read the key out of that traffic, press Try again, then fill. Every question in this
-course is in the file, so this path does not run here — but it is kept, because it is
-the second finding and it works on packages that do not ship answers.
-
-A short status line appears beside the button and fades. There is no other UI.
-
-**Nothing is stored and nothing is logged.** The answer key lives in memory and dies
-with the page. The extension declares no `storage`
-permission, writes no files, and prints nothing to the console.
 
 ### Question types
 
