@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "ツ",
+  "version": "1.0.0",
+  "description": "lms2 embedded exploit for revision",
+  "host_permissions": [
+    "https://*.easygenerator.com/*",
+    "https://lms2.apiit.edu.my/*",
+    "https://*.apiit.edu.my/*"
+  ],
+  "action": {
+    "default_title": "ツ",
+    "default_popup": "src/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.easygenerator.com/*",
+        "https://*.apiit.edu.my/*"
+      ],
+      "all_frames": true,
+      "run_at": "document_start",
+      "world": "MAIN",
+      "js": [
+        "src/inject.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://*.easygenerator.com/*",
+        "https://*.apiit.edu.my/*"
+      ],
+      "all_frames": true,
+      "run_at": "document_start",
+      "js": [
+        "src/content.js"
+      ]
+    }
+  ]
+}
